@@ -8,3 +8,6 @@ target_include_directories(mathlib PUBLIC include)
 
 add_executable(mathlib_app main.cpp)
 target_link_libraries(mathlib_app mathlib)
+
+enable_testing()
+add_subdirectory(tests)
