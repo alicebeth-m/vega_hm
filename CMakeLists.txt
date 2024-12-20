@@ -11,3 +11,4 @@ target_link_libraries(mathlib_app mathlib)
 
 enable_testing()
 add_subdirectory(tests)
+add_subdirectory(benchmarks)

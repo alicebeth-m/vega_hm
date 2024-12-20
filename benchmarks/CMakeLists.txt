@@ -1,0 +1,4 @@
+find_package(benchmark REQUIRED)
+
+add_executable(benchmark_mathlib benchmark_mathlib.cpp)
+target_link_libraries(benchmark_mathlib mathlib benchmark::benchmark)

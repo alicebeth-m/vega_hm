@@ -15,7 +15,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
     - name: Install dependencies
-      run: sudo apt-get install cmake libgtest-dev -y
+      run: sudo apt-get install cmake libgtest-dev libbenchmark-dev -y
     - name: Configure build
       run: cmake -S . -B build
     - name: Build project
@@ -29,10 +29,26 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
     - name: Install dependencies
-      run: sudo apt-get install cmake libgtest-dev -y
+      run: sudo apt-get install cmake libgtest-dev libbenchmark-dev -y
     - name: Configure build
       run: cmake -S . -B build
     - name: Build project
       run: cmake --build build
     - name: Run tests
       run: ctest --test-dir build
+
+  benchmark:
+    name: Run Benchmarks
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    - name: Install dependencies
+      run: sudo apt-get install cmake libgtest-dev libbenchmark-dev -y
+    - name: Configure build
+      run: cmake -S . -B build
+    - name: Build benchmarks
+      run: cmake --build build
+    - name: Run benchmarks
+      run: ./build/benchmarks/benchmark_mathlib
